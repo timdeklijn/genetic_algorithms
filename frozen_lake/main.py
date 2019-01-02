@@ -16,16 +16,17 @@ Parameters:
 __author__ = "Tim de Klijn"
 
 import sys
+import gym
 
 from population import Population
 
+env = gym.make('FrozenLake-v0')
+env.is_slippery = False
+
 POPULATION_SIZE = 300
 MUTATION_RATE = 0.01
+DNA_LENGTH = 50
 
-GENES = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,.!? "
-
-TARGET = "To be, or not to be."
-TARGET_LENGTH = len(TARGET)
 
 def main():
     """
@@ -38,16 +39,15 @@ def main():
     """
 
     print(f"""
-Target: {TARGET}
 Population Size: {POPULATION_SIZE}
 Mutation_rate: {MUTATION_RATE}
+DNA_length: {DNA_LENGTH}
 """)
 
-    population = Population(GENES,
+    population = Population(env,
                             POPULATION_SIZE,
-                            TARGET,
-                            TARGET_LENGTH,
-                            MUTATION_RATE)
+                            MUTATION_RATE,
+                            DNA_LENGTH)
     population.init_population()
     population.calc_fitness()
     max_fitness = population.max_fitness
