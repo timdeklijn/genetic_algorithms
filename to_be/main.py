@@ -1,24 +1,41 @@
 """main.py
-Run the genetic algorithm.
+Run the genetic algorithm. Set global variables, then initiate the 
+population. Run untill the proper fitness has been reached. Print
+the fitnes and dna of the fittest individual of the generation.
+
+Parameters:
+    GENES (str): possibles genes in a string
+    GENE_LENGTH (int): Lenght of GENES
+    TARGET (str): target of evolution
+    LEN_TARGET: length of the target
+    POPULATION_SIZE: Number of individuals per population
+    MUTATION_RATE: Chance of a gene mutating during creation of 
+        offspring
 """
+
+__author__ = "Tim de Klijn"
 
 import sys
 
 from population import Population
 
-__author__ = "Tim de Klijn"
+POPULATION_SIZE = 300
+MUTATION_RATE = 0.01
 
 GENES = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,.!? "
-GENE_LENGTH = len(GENES)
 
 TARGET = "To be, or not to be."
 TARGET_LENGTH = len(TARGET)
 
-POPULATION_SIZE = 300
-MUTATION_RATE = 0.01
-
 def main():
-    """docstring"""
+    """
+    Control the genetic algorithm:
+    
+    First create a population. The population is passed all global 
+    variables. Then initiate the population and calculate the fitness.
+    Start the loop, print the current fitness and best dna sequence, 
+    when max fitness is reached, break out of loop and quit.
+    """
 
     print(f"""
 Target: {TARGET}
@@ -43,6 +60,7 @@ Mutation_rate: {MUTATION_RATE}
         iteration += 1
         max_fitness = population.max_fitness
 
+        # Print on a line in terminal, then print over it
         sys.stdout.flush()
         sys.stdout.write("\r")
         sys.stdout.flush()
@@ -52,6 +70,7 @@ Mutation_rate: {MUTATION_RATE}
         population.create_offspring()
         population.calc_fitness()
 
+        # Escape loop
         if max_fitness == 1.0:
             breed = False
 

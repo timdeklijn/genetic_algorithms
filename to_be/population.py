@@ -11,19 +11,26 @@ from individual import Individual
 
 class Population():
     """
-    Docstring
+    Control population during running the genetic algorithm. Has 
+    functions for creating a population, producing offspring and
+    scoring the population.
+
+    Parameters:
+        genes (str): options to create dna from
+        population_size (int): amount of individuals per generation
+        target (str): target of evolution
+        target_length (int): length of target
+        mutation_rate (float): determines mutation during reproduction
     """
 
     def __init__(self,
                  genes: str,
-                 gene_length: int,
                  population_size: int,
                  target: str,
                  target_length: int,
                  mutation_rate: float):
 
         self.genes = genes
-        self.gene_length = gene_length
 
         self.population: List[Individual] = []
         self.population_size = population_size

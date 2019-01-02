@@ -7,13 +7,24 @@ the gene pool.
 import numpy as np
 
 class Individual():
-    """docstring"""
+    """
+    Class containing info and functions on individuals in the 
+    population. Depending on value of dna, will create new
+    dna or accept input. 
+
+    Parameters: 
+        genes (str): str with options to generate dna.
+        target (str): str with target of evolution
+        target_length (int): length of target
+        dna (str): dna sequence of individual
+    """
 
     def __init__(self,
                  genes: str,
                  target: str,
                  target_length: int,
                  dna: str = None):
+
         self.genes = genes
 
         self.target = target
@@ -24,6 +35,7 @@ class Individual():
                 np.random.choice(list(self.genes), self.target_length))
         else:
             self.dna = dna
+
         self.fitness = self.calc_fitness()
 
 
