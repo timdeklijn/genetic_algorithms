@@ -4,10 +4,7 @@ population. Run untill the proper fitness has been reached. Print
 the fitnes and dna of the fittest individual of the generation.
 
 Parameters:
-    GENES (str): possibles genes in a string
-    GENE_LENGTH (int): Lenght of GENES
-    TARGET (str): target of evolution
-    LEN_TARGET: length of the target
+    DNA_LENGTH: amount of 'actions' to optimize
     POPULATION_SIZE: Number of individuals per population
     MUTATION_RATE: Chance of a gene mutating during creation of 
         offspring
@@ -20,13 +17,40 @@ import gym
 
 from population import Population
 
-env = gym.make('FrozenLake-v0')
+from gym.envs.registration import register 
+
+# Setup custom environment
+register(
+    id='FrozenLakeIsNotSlip-v0',
+    entry_point='gym.envs.toy_text:FrozenLakeEnv', 
+    kwargs={
+        'map_name' : '8x8',
+        'is_slippery': False}, 
+    max_episode_steps=100, 
+    reward_threshold=0.78)#, # optimum = .8196 )
+
+env = gym.make('FrozenLakeIsNotSlip-v0')
 env.is_slippery = False
 
-POPULATION_SIZE = 300
-MUTATION_RATE = 0.01
+# Global parameters
+POPULATION_SIZE = 200
+MUTATION_RATE = 0.02
 DNA_LENGTH = 50
 
+def run_dna(env, dna):
+    """
+    Given a environment and a dna sequence, run and show the sequence.
+    """
+
+    observation = env.reset()
+    env.render()
+    for i,s in enumerate(dna):
+        observation, reward, done, info = env.step(s)
+        env.render()
+        if done:
+            print(f"\n {i} steps needed")
+            break
+ 
 
 def main():
     """
@@ -56,22 +80,27 @@ DNA_length: {DNA_LENGTH}
     iteration = 0
 
     while breed:
-        iteration += 1
+
+        population.create_offspring()
+        population.calc_fitness()
         max_fitness = population.max_fitness
+
+        dna_str = ''.join([str(i) for i in population.population[0].dna])
 
         # Print on a line in terminal, then print over it
         sys.stdout.flush()
         sys.stdout.write("\r")
         sys.stdout.flush()
-        sys.stdout.write(
-            f"{iteration:>5} : {max_fitness:.2f} : {population.population[0].dna}")
+        sys.stdout.write(f"{iteration:>5} : {max_fitness:.3f} : {dna_str}")
 
-        population.create_offspring()
-        population.calc_fitness()
-
-        # Escape loop
-        if max_fitness == 1.0:
+        if iteration == 100:
             breed = False
+
+        iteration += 1
+
+    print('\n\n')
+
+    run_dna(env, population.population[0].dna)
 
     print("\n\nFinished\n")
 

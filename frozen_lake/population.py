@@ -64,7 +64,7 @@ class Population():
 
     def create_offspring(self):
         """
-        For population size, pick two individuals from the populatoin
+        For population size, pick two individuals from the population
         based on the fitness score and create offspring, this will be
         the new population.
         """
@@ -74,13 +74,12 @@ class Population():
         for _ in range(self.population_size):
             # Select to individuals, chance is scaled to fitness score
             parents = np.random.choice(self.population, 2, p=p_list)
-            # Create new dna form parents
+            # Create new dna from parents
             new_dna = parents[0].mix_dna(
-                parents[1].dna, self.mutation_rate)
+                self.env, parents[1].dna, self.mutation_rate)
             new_population.append(Individual(
-                self.genes,
-                self.target,
-                self.target_length,
+                self.env,
+                self.dna_length,
                 new_dna))
         self.population = new_population
 
