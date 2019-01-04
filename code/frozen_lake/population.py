@@ -11,7 +11,7 @@ from individual import Individual
 
 class Population():
     """
-    Control population during running the genetic algorithm. Has 
+    Control population during running the genetic algorithm. Has
     functions for creating a population, producing offspring and
     scoring the population.
 
@@ -31,7 +31,7 @@ class Population():
 
 
         self.env = env
-    
+
         self.population: List[Individual] = []
         self.population_size = population_size
 
@@ -76,7 +76,7 @@ class Population():
             parents = np.random.choice(self.population, 2, p=p_list)
             # Create new dna from parents
             new_dna = parents[0].mix_dna(
-                self.env, parents[1].dna, self.mutation_rate)
+                parents[1].dna, self.mutation_rate)
             new_population.append(Individual(
                 self.env,
                 self.dna_length,

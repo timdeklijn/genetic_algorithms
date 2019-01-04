@@ -31,7 +31,7 @@ class Individual():
         if dna is None:
             self.dna = []
             for _ in range(self.dna_length):
-               self.dna.append(self.env.action_space.sample())
+                self.dna.append(self.env.action_space.sample())
         else:
             self.dna = dna
 
@@ -47,12 +47,12 @@ class Individual():
             * Make the shortes path important as well
         """
 
-        observation = self.env.reset()
+        self.env.reset()
         counter = 0
         fitness = 0
         for i in range(self.dna_length):
-            observation, reward, done, _ = self.env.step(self.dna[i])
-            counter +=1
+            _, reward, done, _ = self.env.step(self.dna[i])
+            counter += 1
             if done:
                 if reward != 0.0:
                     fitness = reward - (counter * 0.001)
@@ -62,7 +62,7 @@ class Individual():
         return fitness
 
 
-    def mix_dna(self, env, dna_2: str, mutation_rate: float) -> str:
+    def mix_dna(self, dna_2: str, mutation_rate: float) -> str:
         """
         Given a second DNA sequence, mix two sequences and return
         offspring DNA. Based on mutation rate, mutate certain genes.
