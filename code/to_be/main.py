@@ -27,7 +27,7 @@ GENES = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,.!? "
 TARGET = "To be, or not to be."
 TARGET_LENGTH = len(TARGET)
 
-def main():
+def main() -> None:
     """
     Control the genetic algorithm:
     

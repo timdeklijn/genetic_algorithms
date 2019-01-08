@@ -23,7 +23,7 @@ class Individual():
                  genes: str,
                  target: str,
                  target_length: int,
-                 dna: str = None):
+                 dna: str = None) -> None:
 
         self.genes = genes
 

@@ -3,6 +3,8 @@ population class for genetic algorithm. Contains initiation functions,
 calls for fitness fvalues, creates genepool and regulates reproduction.
 """
 
+__author__ = "Tim de Klijn"
+
 from typing import List
 import numpy as np
 
@@ -18,8 +20,7 @@ class Population():
     Parameters:
         genes (str): options to create dna from
         population_size (int): amount of individuals per generation
-        target (str): target of evolution
-        target_length (int): length of target
+        dna_length (int): length of target
         mutation_rate (float): determines mutation during reproduction
     """
 
