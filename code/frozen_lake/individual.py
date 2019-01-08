@@ -22,7 +22,7 @@ class Individual():
     def __init__(self,
                  env,
                  dna_length: int,
-                 dna: str = None):
+                 dna: str = None) -> None:
 
         self.env = env
 

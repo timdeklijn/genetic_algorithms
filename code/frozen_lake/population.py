@@ -28,7 +28,7 @@ class Population():
                  env,
                  population_size: int,
                  mutation_rate: float,
-                 dna_length: int):
+                 dna_length: int) -> None:
 
 
         self.env = env
@@ -41,7 +41,7 @@ class Population():
 
         self.max_fitness: float = 0.0
 
-    def init_population(self):
+    def init_population(self) -> None:
         """
         Create n individuals where n is the population
         size. Save these in self.population.
@@ -53,7 +53,7 @@ class Population():
                 self.dna_length))
 
 
-    def _create_p_list(self):
+    def _create_p_list(self) -> None:
         """
         Create a list of fitness scores and scale it to have a sum
         of 1.
@@ -63,7 +63,7 @@ class Population():
         return p_list / np.sum(p_list)
 
 
-    def create_offspring(self):
+    def create_offspring(self) -> None:
         """
         For population size, pick two individuals from the population
         based on the fitness score and create offspring, this will be
@@ -85,7 +85,7 @@ class Population():
         self.population = new_population
 
 
-    def calc_fitness(self):
+    def calc_fitness(self) -> None:
         """
         Sort the population and extract the maximal fitness from
         the population
