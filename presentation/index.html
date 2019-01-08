@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Genetic</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+<!-- SLIDES -->
+
+
+<section>
+	<h1>Genetic Algorithms</h1>
+	<p>Tim de Klijn</p>
+	<p>18-01-2019</p>
+</section>
+
+<section>
+
+	<section>
+		<h1>Charles Darwin</h1>
+		<img data-src="imgs/darwin.jpg" width=70%>
+		<h4>The Origin of Species</h4>
+	</section>
+
+	<section>
+	<ul>
+	<li>Survey Voyage on the Beagle</li>
+	<li>Origin of species</li>
+	<li>Natural Selection</li>
+	</ul>
+	</section>
+
+</section>
+
+<section>
+
+	<section>
+		<h1>Step by Step</h1>
+	</section>
+
+	<section>
+		<h3>Define Global Parameters</h3>
+		<ul>
+		<li>Population Size</li>
+		<li>Mutation rate</li>
+		<li>Genes</li>
+		<li>Target</li>
+		</ul>
+	</section>
+
+	<section>
+	<h3>Inititial Population</h3>
+	<ul>
+	<li>Create individuals with random DNA</li>
+	<li>Calculate fitness of individuals</li>
+	</ul>
+	</section>
+
+	<section>
+	<h3>Evolution Loop</h3>
+	<ul>
+	<li>Select parents</li>
+	<ul>
+	<li>Change to reproduce based on fitness score</li>
+	</ul>
+	<li>Create offspring</li>
+	<ul>
+	<li>Randomly get DNA from a parent</li>
+	<li>Mutate to random gene</li>
+	</ul>
+	</ul>
+	</section>
+
+	<section>
+	<h3>Break out?</h3>
+	<ul>
+	<li>n-iteration</li>
+	<li>Max fitness</li>
+	</ul>
+	</section>
+
+	<section>
+	<h3>Returns</h3>
+	<p>A (DNA) sequence that best fits the targets or has the
+	highest fitness score.</p>
+	</section>
+
+</section>
+
+<section>
+
+	<section>
+	<h3>Examples</h3>
+	<ul>
+	<li><a href="to_be/index.html" target="_blank">To be or not To
+be</a></li>
+	<li><a href="rockets/index.html" target="_blank">Smart Rockets</a></li>
+	</ul>
+	</section>
+
+</section>
+
+
+<!-- SLIDES -->
+
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
