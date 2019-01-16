@@ -32,14 +32,15 @@
 	<h1>Genetic Algorithms</h1>
 	<p>Tim de Klijn</p>
 	<p>18-01-2019</p>
+	<a href="https://github.com/timdeklijn/genetic_algorithms" target="blank"> 
+		https://github.com/timdeklijn/genetic_algorithms</a>
 </section>
 
 <section>
 
 	<section>
-		<h1>Charles Darwin</h1>
-		<img data-src="imgs/darwin.jpg" width=70%>
-		<h4>The Origin of Species</h4>
+		<h3>Charles Darwin</h3>
+		<img data-src="imgs/darwin.jpg" width=80%>
 	</section>
 
 	<section>
@@ -50,40 +51,122 @@
 	</ul>
 	</section>
 
+	<section>
+			<h3>Observation</h3>
+			<img data-src="imgs/birds.jpg" width=50%>
+			<p>Seed or insect eating finches (vink in Dutch) have different beaks</p>
+		</section>
+
+	<section>
+		<blockquote>
+	"Variation is a feature of natural populations and every population 
+	produces more progeny than its environment can manage. The consequences 
+	of this overproduction is that those individuals with the best genetic 
+	fitness for the environment will produce offspring that can more successfully 
+	compete in that environment. Thus the subsequent generation will have a higher 
+	representation of these offspring and the population will 
+	have evolved."
+		</blockquote>
+	Charles Darwin
+	</section>
+
+</section>
+
+<section>
+	<section>
+		<h1>Dr. John Holland, 1960s</h1>
+		<blockquote>
+			"problem-solving method that uses genetics as its model of problem solving."
+		</blockquote>
+	</section>
+
+	<section>
+		<h3>Four features:</h3>
+		<h4>One</h4>
+		<p>Evolution is a process that operates on chromosomes rather 
+			than on the living beings they encode.</p>
+	</section>
+
+	<section>
+		<h3>Four features:</h3>
+		<h4>Two</h4>
+		<p>Natural selection is the link between chromosomes and the performance 
+			of their decoded structures. Processes of natural selection cause 
+			those chromosomes that encode successful structures to reproduce 
+			more often then those that do not.</p>
+	</section>
+
+	
+	<section>
+		<h3>Four features:</h3>
+		<h4>Three</h4>
+		<p>The process of reproduction is the point at which 
+			evolution takes place. Mutation may cause the chromosomes 
+			of biological children to be different from those of their 
+			biological parents, and recombination processes may create 
+			quite different chromosomes in the children by combining 
+			material from the chromosome of two parents.</p>
+	</section>
+
+	<section>
+		<h3>Four features:</h3>
+		<h4>Four</h4>
+		<p>Biological evolution has no memory. Whatever it knows 
+			about producing individuals that will function well in 
+			their environment is contained in the gene pool - the set 
+			of chromosomes carried by the current individuals - and in 
+			the structure of the chromosome decoders.</p>
+	</section>
+
 </section>
 
 <section>
 
 	<section>
-		<h1>Step by Step</h1>
+		<h3>Step by Step</h3>
+		<img data-src="imgs/ga.png" width=40%>
+		<small>https://www.neuraldesigner.com/blog/genetic_algorithms_for_feature_selection</small>
 	</section>
 
 	<section>
-		<h3>Define Global Parameters</h3>
-		<ul>
-		<li>Population Size</li>
-		<li>Mutation rate</li>
-		<li>Genes</li>
-		<li>Target</li>
-		</ul>
+		<h3>Initialization</h3>
+		<pre>
+			<code>
+population_size = 200
+mutation_rate = 0.03
+genes = "abcde....ABC...!,?"
+target = "to be, or not to be"
+			</code>
+		</pre>
 	</section>
 
 	<section>
-	<h3>Inititial Population</h3>
-	<ul>
-	<li>Create individuals with random DNA</li>
-	<li>Calculate fitness of individuals</li>
-	</ul>
+	<h3>Initizalization + Fitnes Assignment</h3>
+	<pre>
+		<code>
+population = Population(GENES,
+	POPULATION_SIZE,
+	TARGET,
+	TARGET_LENGTH,
+	MUTATION_RATE)
+population.init_population()
+population.calc_fitness()
+max_fitness = population.max_fitness
+		</code>
+	</pre>
 	</section>
 
 	<section>
-	<h3>Evolution Loop</h3>
+	<h3>Selection + Reproduction</h3>
+	<pre>
+		<code>
+while breed:
+	population.create_offspring()
+	population.calc_fitness()
+		</code>
+	</pre>
 	<ul>
-	<li>Select parents</li>
-	<ul>
-	<li>Change to reproduce based on fitness score</li>
-	</ul>
-	<li>Create offspring</li>
+	<li>Crossover + Mutation</li>
 	<ul>
 	<li>Randomly get DNA from a parent</li>
 	<li>Mutate to random gene</li>
@@ -92,11 +175,14 @@
 	</section>
 
 	<section>
-	<h3>Break out?</h3>
-	<ul>
-	<li>n-iteration</li>
-	<li>Max fitness</li>
-	</ul>
+	<h3>Stopping criteria</h3>
+	<pre>
+		<code>
+# Escape loop
+if max_fitness == 1.0:
+	breed = False
+		</code>
+	</pre>
 	</section>
 
 	<section>
@@ -118,8 +204,50 @@ be</a></li>
 	</ul>
 	</section>
 
+	<section>
+		<h3>Optimizing Neural Networks</h3>
+		<img data-src="imgs/nn_example.png" width=90%>
+		<small>https://www.neuraldesigner.com/blog/genetic_algorithms_for_feature_selection</small>
+	</section>
+
+	<section>
+		<h3>Uber - Deep neuroevolution</h3>
+		<a href="https://eng.uber.com/deep-neuroevolution/" target="blank">
+		https://eng.uber.com/deep-neuroevolution/
+		</a>
+	</section>
+
 </section>
 
+<section>
+	<h3>Advantages</h3>
+	<ul>
+	<li>(can) Skip local minima</li>
+	<li>A lot of parameters simultaniously</li>
+	</ul>
+
+</section>
+
+<section>
+	
+	<section>
+		<h1>Practical</h1>
+		https://github.com/timdeklijn/genetic_algorithms
+	</section>
+
+	<section>
+		<h1>Infinite Monkey Theorem</h1>
+	</section>
+
+	<section>
+		<h1>Frozen Lake</h1>
+	</section>
+
+	<section>
+		<h1>Traveling Salesman?</h1>
+	</section>
+
+</section>
 
 <!-- SLIDES -->
 
