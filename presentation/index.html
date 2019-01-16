@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Genetic</title>
+		<title>Genetic Hackathon</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/moon.css">
+		<link rel="stylesheet" href="css/theme/league.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -32,7 +32,7 @@
 	<h1>Genetic Algorithms</h1>
 	<p>Tim de Klijn</p>
 	<p>18-01-2019</p>
-	<a href="https://github.com/timdeklijn/genetic_algorithms" target="blank"> 
+	<a href="https://github.com/timdeklijn/genetic_algorithms" target="blank">
 		https://github.com/timdeklijn/genetic_algorithms</a>
 </section>
 
@@ -118,7 +118,7 @@
 		<h3>Four features:</h3>
 		<h4>Three</h4>
 		<p>
-			The process of reproduction is the point at which 
+			The process of reproduction is the point at which
 			evolution takes place. Mutation may cause the chromosomes of biological children to be different from those of their biological parents, and recombination processes may create quite different chromosomes in the children by combining material from the chromosome of two parents.
 		</p>
 	</section>
@@ -223,7 +223,7 @@ class Population():
 
 	<!-- init -->
 	<section>
-	<h3>Initizalization + Fitnes Calculation</h3>
+	<h3>Initizalization + Fitness Calculation</h3>
 	<pre>
 		<code>
 population = Population(GENES,
@@ -250,13 +250,19 @@ max_fitness = population.max_fitness
 		</pre>
 	</section>
 
+	<!-- Reproction Section -->
+	<section data-background-image="imgs/bad_touch.jpg"
+			 data-background-opacity=0.5>
+		<h1>Reproduction</h1>
+	</section>
+
 	<!-- Choose Parents -->
 	<section>
-		<h2>Select Parents</h2>
+		<h3>Select Parents</h3>
 		<p>
 			Select parents based on fitness score. But even parents with low fitness score should have a chance to reproduce.
 		</p>
-		<h3>Options:</h3>
+		<h4>Options:</h4>
 		<ul>
 			<li>Convert population to "pool"</li>
 			<ul>
@@ -277,16 +283,16 @@ max_fitness = population.max_fitness
 	<section>
 		<ul>
 		<li>
-			p1: <strong>AAAAAA</strong>, 
+			p1: <strong>AAAAAA</strong>,
 			p2: <strong>BBBBBB</strong>
 		</li>
 		<ul>
 			<li>
-				o1: <strong>AAABBB</strong>, 
+				o1: <strong>AAABBB</strong>,
 				o2: <strong>ABBBBB</strong>
 			</li>
 			<li>
-				o1: <strong>ABABAB</strong>, 
+				o1: <strong>ABABAB</strong>,
 				o2: <strong>AABBAA</strong>
 			</li>
 		</ul>
@@ -342,27 +348,43 @@ if max_fitness == 1.0:
 
 	<!-- Uber example -->
 	<section>
-		<h3>Uber - Deep neuroevolution</h3>
+		<h3>Uber AI Labs - Deep neuroevolution</h3>
 		<a href="https://eng.uber.com/deep-neuroevolution/" target="blank">
 		https://eng.uber.com/deep-neuroevolution/
 		</a>
+		<blockquote>
+			<p>
+				".. five papers that support the emerging realization that neuroevolution, where neural networks are optimized through evolutionary algorithms, is also an effective method to train deep neural networks for reinforcement learning (RL) problems."
+			</p>
+		</blockquote>
+	</section>
+
+	<section data-background-video="https://eng.uber.com/wp-content/uploads/2017/12/3x3_montage_8_seconds-2-1.mp4" data-background-video-loop data-background-video-muted>
 	</section>
 
 </section>
 
-<!-- Advantages -->
+<!-- Conclusions -->
 <section>
-	<h3>Advantages</h3>
-	<ul>
-	<li>(can) Skip local minima</li>
-	<li>A lot of parameters simultaniously</li>
-	</ul>
+
+	<section>
+		<h3>Advantages</h3>
+		<ul>
+			<li>(can) Skip local minima</li>
+			<li>A lot of parameters simultaniously</li>
+			<li>Easy to run parallel</li>
+		</ul>
+	</section>
+
+	<!-- Drawbacks -->
+	<section data-background-video="https://eng.uber.com/wp-content/uploads/2017/12/narrowing_path_composite.mp4" data-background-video-loop data-background-video-muted>
+	</section>
 
 </section>
 
 <!-- Practical Section -->
 <section>
-	
+
 	<!-- Title -->
 	<section>
 		<h1>Practical</h1>
@@ -374,9 +396,34 @@ if max_fitness == 1.0:
 		<h1>Infinite Monkey Theorem</h1>
 	</section>
 
+	<!-- Explain monkeys -->
+	<section>
+		<h2>Finish the following</h2>
+		<h4>to_be_exercies.ipynb</h4>
+		<ol>
+			<li>calc_fitness (per individual)</li>
+			<li>mix_dna (per individual)</li>
+			<li>create_offspring (population)</li>
+		</ol>
+	</section>
+
 	<!-- Frozen Lake -->
 	<section>
 		<h1>Frozen Lake</h1>
+	</section>
+
+	<!-- explain frozen lake -->
+	<section>
+		<h2>Finihs the following</h2>
+		<h4>frozen_lake_exercise.ipynb</h4>
+		<ul>
+			<li>calc_fitness (individual)</li>
+			<ul>
+				<li>Find the finish (do not die)</li>
+				<li>Shortest route</li>
+			</ul>
+			<li>Optionally modify mix_dna (individual)</li>
+		</ul>
 	</section>
 
 	<!-- Traveling Salesman -->
