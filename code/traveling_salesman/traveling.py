@@ -1,15 +1,32 @@
 """Traveling Salesman setup
 
+Preparation for hackathon 2019-01-18. 
+
+Contains a start of the traveling salesman problem.
+creates (random) locations, shows how a random route 
+looks, and can bruteforce the shortes route.
+
+Example:
+
+    python traveling.py --help
+    python traveling.py --example
+    python traveling.py --brute
+    python traveling.py --genetic
+
+Todo:
+
+    * Implement genetic algorithm to solve problem
+    * Set seed to ensure routes for brute and genetic are the same
 """
 
 __author__ = "Tim de Klijn"
 
 import sys
 import random
-import numpy as np
 import argparse
 import itertools
 import time
+import numpy as np
 from typing import Tuple, List
 import matplotlib.pyplot as plt
 
@@ -24,9 +41,8 @@ HEIGHT = 10
 def random_locations() -> List[location]:
     """Create a list of locations withing WIDTH and HEIGHT"""
     location_list: List[location] = []
-    for i in range(N_LOCATIONS):
+    for _ in range(N_LOCATIONS):
         l: location = (
-            # i,
             WIDTH * np.random.random_sample(),
             HEIGHT * np.random.random_sample()
             )
@@ -73,7 +89,6 @@ def calc_distance(location_list: List[location],
 
 def generate_random_route() -> route_list:
     """Create a random route based on N_LOCATIONS"""
-
     # Create random sequence lists
     options = list(range(N_LOCATIONS))
     random.shuffle(options)
@@ -83,21 +98,28 @@ def generate_random_route() -> route_list:
 
 def main() -> None:
 
+    #### Commandline argument parsing ####
+
     parser = argparse.ArgumentParser(
         description="{}".format("Traveling Salesman framework")
     )
 
-    parser.add_argument("--random", 
+    parser.add_argument(
+        "--random", 
         action = "store_true",
         help = "Show example")
-    parser.add_argument("--brute", 
+    parser.add_argument(
+        "--brute", 
         action = "store_true",
         help = "Do bruteforce method")
-    parser.add_argument("--genetic", 
+    parser.add_argument(
+        "--genetic", 
         action = "store_true",
         help = "Do genetic algorithm")
 
     args = parser.parse_args()
+
+    #### Setup ####
 
     # Locations to visit
     location_list = random_locations()
@@ -139,6 +161,7 @@ def main() -> None:
 
         print("Bruteforcing the answer")
 
+        # Time bruteforce answer
         t_start = time.time()
 
         route = list(range(N_LOCATIONS))
@@ -151,7 +174,7 @@ def main() -> None:
                 location_list, 
                 route
             )
-            # Save if distance is shorte
+            # Save if distance is shortest
             if route_distance < min_distance:
                 shortest_route = route
                 min_distance = route_distance
