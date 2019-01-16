@@ -27,7 +27,7 @@
 
 <!-- SLIDES -->
 
-
+<!-- title slide -->
 <section>
 	<h1>Genetic Algorithms</h1>
 	<p>Tim de Klijn</p>
@@ -36,43 +36,58 @@
 		https://github.com/timdeklijn/genetic_algorithms</a>
 </section>
 
+<!-- Darwin section -->
 <section>
 
+	<!-- picture darwin -->
 	<section>
 		<h3>Charles Darwin</h3>
 		<img data-src="imgs/darwin.jpg" width=80%>
 	</section>
 
+	<!-- beagle -->
 	<section>
-	<ul>
-	<li>Survey Voyage on the Beagle</li>
-	<li>Origin of species</li>
-	<li>Natural Selection</li>
-	</ul>
+		<h3>Survey Voyage on the Beagle</h3>
+		<img data-src="imgs/beagle.jpg" width=90%>
 	</section>
 
+	<!-- finches -->
 	<section>
-			<h3>Observation</h3>
-			<img data-src="imgs/birds.jpg" width=50%>
-			<p>Seed or insect eating finches (vink in Dutch) have different beaks</p>
-		</section>
+		<h3>Observation</h3>
+		<img data-src="imgs/birds.jpg" width=50%>
+		<p>
+			Seed or insect eating finches (vink in Dutch) have different beaks
+		</p>
+	</section>
 
+	<!-- Darwin quote -->
 	<section>
+		<h3>After Beagle Voyage</h3>
 		<blockquote>
-	"Variation is a feature of natural populations and every population 
-	produces more progeny than its environment can manage. The consequences 
-	of this overproduction is that those individuals with the best genetic 
-	fitness for the environment will produce offspring that can more successfully 
-	compete in that environment. Thus the subsequent generation will have a higher 
-	representation of these offspring and the population will 
-	have evolved."
+		<small>
+			"Variation is a feature of natural populations and every population produces more progeny than its environment can manage. The consequences of this overproduction is that those individuals with the best genetic fitness for the environment will produce offspring that can more successfully compete in that environment. Thus the subsequent generation will have a higher representation of these offspring and the population will have evolved."
 		</blockquote>
-	Charles Darwin
+		Charles Darwin
+		</small>
+	</section>
+
+	<!-- sidenodes -->
+	<section>
+		<h3>Modern Interpretation</h3>
+		<ul>
+			<li>DNA sequencing</li>
+			<li>(Epi)genetics</li>
+			<li>CRISPR CAS9, gene editing</li>
+			<li>Variation &rarr; Luck</li>
+		</ul>
 	</section>
 
 </section>
 
+<!-- GA section -->
 <section>
+
+	<!-- John Holland -->
 	<section>
 		<h1>Dr. John Holland, 1960s</h1>
 		<blockquote>
@@ -80,68 +95,135 @@
 		</blockquote>
 	</section>
 
+	<!-- Features -->
 	<section>
 		<h3>Four features:</h3>
 		<h4>One</h4>
-		<p>Evolution is a process that operates on chromosomes rather 
-			than on the living beings they encode.</p>
+		<p>
+			Evolution is a process that operates on chromosome rather than on the living beings they encode.
+		</p>
 	</section>
 
+	<!-- Features -->
 	<section>
 		<h3>Four features:</h3>
 		<h4>Two</h4>
-		<p>Natural selection is the link between chromosomes and the performance 
-			of their decoded structures. Processes of natural selection cause 
-			those chromosomes that encode successful structures to reproduce 
-			more often then those that do not.</p>
+		<p>
+			Natural selection is the link between chromosomes and the performance of their decoded structures. Processes of natural selection cause those chromosomes that encode successful structures to reproduce more often then those that do not.
+		</p>
 	</section>
 
-	
+	<!-- Features -->
 	<section>
 		<h3>Four features:</h3>
 		<h4>Three</h4>
-		<p>The process of reproduction is the point at which 
-			evolution takes place. Mutation may cause the chromosomes 
-			of biological children to be different from those of their 
-			biological parents, and recombination processes may create 
-			quite different chromosomes in the children by combining 
-			material from the chromosome of two parents.</p>
+		<p>
+			The process of reproduction is the point at which 
+			evolution takes place. Mutation may cause the chromosomes of biological children to be different from those of their biological parents, and recombination processes may create quite different chromosomes in the children by combining material from the chromosome of two parents.
+		</p>
 	</section>
 
+	<!-- Features -->
 	<section>
 		<h3>Four features:</h3>
 		<h4>Four</h4>
-		<p>Biological evolution has no memory. Whatever it knows 
-			about producing individuals that will function well in 
-			their environment is contained in the gene pool - the set 
-			of chromosomes carried by the current individuals - and in 
-			the structure of the chromosome decoders.</p>
+		<p>
+			Biological evolution has no memory. Whatever it knows about producing individuals that will function well in their environment is contained in the gene pool - the set of chromosomes carried by the current individuals - and in the structure of the chromosome decoders.
+		</p>
 	</section>
 
 </section>
 
+<!-- GA step by step -->
 <section>
 
+	<!-- GA flow -->
 	<section>
-		<h3>Step by Step</h3>
-		<img data-src="imgs/ga.png" width=40%>
-		<small>https://www.neuraldesigner.com/blog/genetic_algorithms_for_feature_selection</small>
+		<img data-src="imgs/ga.png" width=30%>
+		<p>
+		<font size="3">
+			https://www.neuraldesigner.com/blog/genetic_algorithms_for_feature_selection
+		</font>
+		</p>
 	</section>
 
+	<!-- code layout -->
 	<section>
-		<h3>Initialization</h3>
+		<h3>Global program layout</h3>
 		<pre>
-			<code>
+		<code>
+GLOBAL PARAMETERS
+
+class Individual():
+	...
+
+class Population():
+	...
+
+def main():
+	...
+		</code>
+		</pre>
+	</section>
+
+	<!-- Global Perameters -->
+	<section>
+		<h3>Global Parameters</h3>
+		<pre>
+		<code>
 population_size = 200
 mutation_rate = 0.03
 genes = "abcde....ABC...!,?"
 target = "to be, or not to be"
-			</code>
+		</code>
 		</pre>
 	</section>
 
+	<!-- Individual Class -->
 	<section>
-	<h3>Initizalization + Fitnes Assignment</h3>
+		<h3>Individual Class</h3>
+		<pre>
+		<code>
+class Individual():
+	def __init__(self):
+		self.dna = ...
+		self.fitness = self.calc_fitness()
+		...
+
+	def calc_fitness():
+		...
+
+	def mix_dna():
+		...
+		</code>
+		</pre>
+	</section>
+
+	<!-- Population -->
+	<section>
+		<h3>Population Class</h3>
+		<pre>
+		<code>
+class Population():
+
+	def __init__():
+		...
+
+	def init_population():
+		...
+
+	def create_offspring():
+		...
+
+	def calc_fitness():
+		...
+		</code>
+		</pre>
+	</section>
+
+	<!-- init -->
+	<section>
+	<h3>Initizalization + Fitnes Calculation</h3>
 	<pre>
 		<code>
 population = Population(GENES,
@@ -156,24 +238,65 @@ max_fitness = population.max_fitness
 	</pre>
 	</section>
 
+	<!-- Selection + Reproduction -->
 	<section>
-	<h3>Selection + Reproduction</h3>
-	<pre>
-		<code>
-while breed:
-	population.create_offspring()
-	population.calc_fitness()
-		</code>
-	</pre>
-	<ul>
-	<li>Crossover + Mutation</li>
-	<ul>
-	<li>Randomly get DNA from a parent</li>
-	<li>Mutate to random gene</li>
-	</ul>
-	</ul>
+		<h3>Selection + Reproduction</h3>
+		<pre>
+			<code>
+	while breed:
+		population.create_offspring()
+		population.calc_fitness()
+			</code>
+		</pre>
 	</section>
 
+	<!-- Choose Parents -->
+	<section>
+		<h2>Select Parents</h2>
+		<p>
+			Select parents based on fitness score. But even parents with low fitness score should have a chance to reproduce.
+		</p>
+		<h3>Options:</h3>
+		<ul>
+			<li>Convert population to "pool"</li>
+			<ul>
+				<li>
+					List of individuals, their fitness score is related to the number of occurences in the pool.
+				</li>
+				<li>
+					Pick two random individuals from the pool
+				</li>
+			</ul>
+			<li>
+				Random choice with probabilities based on fitness score
+			</li>
+		</ul>
+	</section>
+
+	<!-- Create Offspring -->
+	<section>
+		<ul>
+		<li>
+			p1: <strong>AAAAAA</strong>, 
+			p2: <strong>BBBBBB</strong>
+		</li>
+		<ul>
+			<li>
+				o1: <strong>AAABBB</strong>, 
+				o2: <strong>ABBBBB</strong>
+			</li>
+			<li>
+				o1: <strong>ABABAB</strong>, 
+				o2: <strong>AABBAA</strong>
+			</li>
+		</ul>
+		<li>
+			Mutate to random gene based on mutation rate
+		</li>
+		</ul>
+	</section>
+
+	<!-- Stopping criteria -->
 	<section>
 	<h3>Stopping criteria</h3>
 	<pre>
@@ -185,31 +308,39 @@ if max_fitness == 1.0:
 	</pre>
 	</section>
 
+	<!-- End result -->
 	<section>
-	<h3>Returns</h3>
-	<p>A (DNA) sequence that best fits the targets or has the
-	highest fitness score.</p>
+		<h3>Returns</h3>
+		<p>A (DNA) sequence that best fits the targets or has the
+		highest fitness score.</p>
 	</section>
 
 </section>
 
+<!-- Examples -->
 <section>
 
+	<!-- Own Examples -->
 	<section>
 	<h3>Examples</h3>
 	<ul>
-	<li><a href="to_be/index.html" target="_blank">To be or not To
-be</a></li>
-	<li><a href="rockets/index.html" target="_blank">Smart Rockets</a></li>
+	<li>
+		<a href="to_be/index.html" target="_blank">To be or not To be</a>
+	</li>
+	<li><a href="rockets/index.html" target="_blank">
+		"Smart" Rockets</a>
+	</li>
 	</ul>
 	</section>
 
+	<!-- GA in NN -->
 	<section>
 		<h3>Optimizing Neural Networks</h3>
 		<img data-src="imgs/nn_example.png" width=90%>
 		<small>https://www.neuraldesigner.com/blog/genetic_algorithms_for_feature_selection</small>
 	</section>
 
+	<!-- Uber example -->
 	<section>
 		<h3>Uber - Deep neuroevolution</h3>
 		<a href="https://eng.uber.com/deep-neuroevolution/" target="blank">
@@ -219,6 +350,7 @@ be</a></li>
 
 </section>
 
+<!-- Advantages -->
 <section>
 	<h3>Advantages</h3>
 	<ul>
@@ -228,21 +360,26 @@ be</a></li>
 
 </section>
 
+<!-- Practical Section -->
 <section>
 	
+	<!-- Title -->
 	<section>
 		<h1>Practical</h1>
 		https://github.com/timdeklijn/genetic_algorithms
 	</section>
 
+	<!-- To be -->
 	<section>
 		<h1>Infinite Monkey Theorem</h1>
 	</section>
 
+	<!-- Frozen Lake -->
 	<section>
 		<h1>Frozen Lake</h1>
 	</section>
 
+	<!-- Traveling Salesman -->
 	<section>
 		<h1>Traveling Salesman?</h1>
 	</section>
