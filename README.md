@@ -15,9 +15,9 @@ The code folder contains scripts that use genetic algorithms to do a kind of opt
 
 The presentation has been made using reveal.js. The code is in index.html, example JS scripts in "to_be" and "rockets". All images are saved in "imgs". To open the presentation, create a local server from within the presentation folder, for example:
 
-'''
+```
 python -m http.server
-'''
+```
 
 ## Exercises
 
